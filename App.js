@@ -23,7 +23,6 @@ export default function App() {
         <Text style={styles.subtitle2}>Teste de mesa 2!!!</Text>
       </View>
 {/* 
-
         <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}/>
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
