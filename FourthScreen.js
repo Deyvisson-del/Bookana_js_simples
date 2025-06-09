@@ -1,17 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
-import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
-import AppLoading from 'expo-app-loading';
+// import AppLoading from 'expo-app-loading';
 import { MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
 
-export default function App() {
-  const [fontsLoaded] = useFonts({
+ const [fontsLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_700Bold,
     Inter_400Regular,
     Inter_700Bold,
   });
+
+export default function App() {
+ 
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -19,7 +19,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {/* Topo */}
+
       <View style={styles.header}>
       <View style={styles.left}>
         <MaterialIcons name="account-circle" size={50} color="#FFF" />
@@ -31,7 +31,7 @@ export default function App() {
       </View>
     </View>
 
-      {/* Status */}
+
       <View style={styles.statusContainer}>
         <View style={styles.statusBox}>
           <Text style={styles.statusTitle}>Lendo</Text>
@@ -48,7 +48,7 @@ export default function App() {
       </View>
 
       <ScrollView style={styles.scrollContent}>
-        {/* Seções de livros */}
+
         <Text style={styles.sectionTitle}>Lendo</Text>
         <ScrollView horizontal style={styles.bookRow}>
           <Image
@@ -137,19 +137,17 @@ export default function App() {
           />
         </ScrollView>
 
-        {/* Tabela de leitura */}
         <View style={styles.tableSection}>
   <Text style={styles.tableTitle}>Tabela Geral de Leituras</Text>
   
   <View style={styles.table}>
-    {/* Cabeçalho */}
+
     <View style={styles.tableRow}>
       <Text style={[styles.tableCell, styles.tableHeader]}>Título</Text>
       <Text style={[styles.tableCell, styles.tableHeader]}>Ação</Text>
       <Text style={[styles.tableCell, styles.tableHeader]}>Status</Text>
     </View>
 
-    {/* Linha 1 */}
     <View style={styles.tableRow}>
       <Text style={styles.tableCell}>Mindfighter</Text>
       <TouchableOpacity style={styles.tableCell}>
@@ -158,7 +156,6 @@ export default function App() {
       <Text style={styles.tableCell}>Lido</Text>
     </View>
 
-    {/* Linha 2 */}
     <View style={styles.tableRow}>
       <Text style={styles.tableCell}>Eu te amo papai</Text>
       <TouchableOpacity style={styles.tableCell}>
@@ -167,7 +164,6 @@ export default function App() {
       <Text style={styles.tableCell}>Lendo</Text>
     </View>
 
-    {/* Linha 3 */}
     <View style={styles.tableRow}>
       <Text style={styles.tableCell}>A casa 1825</Text>
       <TouchableOpacity style={styles.tableCell}>
@@ -183,7 +179,6 @@ export default function App() {
 </View>
       </ScrollView>
 
-      {/* Menu inferior */}
       <View style={styles.bottomNav}>
   <TouchableOpacity style={styles.navItem}>
     <MaterialIcons name="home" size={30} color="#1E1E1E" />
@@ -305,7 +300,7 @@ tableHeader: {
   fontFamily: 'Inter_700Bold',
 },
 link: {
-  color: '#fff', // amarelo ouro
+  color: '#fff', 
   fontWeight: '400',
 },
 motivText: {

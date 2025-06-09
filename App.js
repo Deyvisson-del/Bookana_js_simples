@@ -1,10 +1,20 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+import HomeScreen from './HomeScreen';
+import SecondScreen from './SecondScreen';
+import ThirdScreen from './ThirdScreen';
+import FourthScreen from './FourthScreen';
+import { useFonts } from 'expo-font';
 
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+// import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
+// import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
+// import AppLoading from 'expo-app-loading';
+// import { MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
+
+// import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
  
@@ -23,10 +33,14 @@ export default function App() {
   }
   
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+   <NavigationContainer>
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Home" component={HomeScreen}/>
+      <Stack.Screen name="Second" component={SecondScreen}/>
+      <Stack.Screen name="Third" component={ThirdScreen}/>
+      <Stack.Screen name="Four" component={FourthScreen}/>
+    </Stack.Navigator>
+   </NavigationContainer>
   );
 }
 

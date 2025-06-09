@@ -2,7 +2,7 @@ import logo from './assets/logoBookana.png';
 import girls from './assets/bookana-girls.png'
 import { FontAwesome, AntDesign } from '@expo/vector-icons';
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ActivityIndicator, Button } from 'react-native';
 import { useFonts } from 'expo-font';
 
 
@@ -10,10 +10,9 @@ import { useFonts } from 'expo-font';
 export default function App() {
 
   const [fontsLoaded] = useFonts({
-    'Inter-Regular': require('./assets/Inter-Regular.ttf'),  // Fonte Bebas Neue
+    'Inter-Regular': require('./assets/Inter-Regular.ttf'),  
   });
 
-  // Exibir um indicador de carregamento enquanto as fontes são carregadas
   if (!fontsLoaded) {
     return (
       <View style={styles.loadingContainer}>
@@ -29,9 +28,6 @@ export default function App() {
       <Image 
       source={girls} 
       style={styles.girls} />
-               
-
-        
     </View>
       
 
@@ -43,7 +39,7 @@ export default function App() {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.buttonSecondary}>
-          <Text style={styles.buttonTextSecondary}>Criar conta</Text>
+          <Button title='Criar conta' style={styles.buttonTextSecondary} onPress={() => navigation.navigate('Second')}/>
         </TouchableOpacity>
 
         <TouchableOpacity>
