@@ -1,16 +1,14 @@
-import logo from './assets/logoBookana.png';
+import React from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ActivityIndicator,} from 'react-native';
 import { FontAwesome, AntDesign } from '@expo/vector-icons';
-import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ActivityIndicator } from 'react-native';
 import { useFonts } from 'expo-font';
+import logo from './assets/logoBookana.png';
 
-export default function App() {
-
+export default function SecondScreen({ navigation }) {
   const [fontsLoaded] = useFonts({
-    'Inter-Regular': require('./assets/Inter-Regular.ttf'),   
-    'BebasNeue-Regular': require('./assets/BebasNeue-Regular.ttf'),  
+    'Inter-Regular': require('./assets/Inter-Regular.ttf'),
+    'BebasNeue-Regular': require('./assets/BebasNeue-Regular.ttf'),
   });
-
 
   if (!fontsLoaded) {
     return (
@@ -28,16 +26,14 @@ export default function App() {
         <Text style={styles.welcomeText}>BEM VINDO DE VOLTA</Text>
       </View>
 
-     
       <View style={styles.form}>
-        <Text style={[styles.loginTitle, { fontFamily: 'Inter-Regular' }]}>Faça login para continuar</Text>
+        <Text style={styles.loginTitle}>Faça login para continuar</Text>
 
         <TextInput
           style={styles.input}
           placeholder="E-mail"
           placeholderTextColor="#888"
         />
-
         <TextInput
           style={styles.input}
           placeholder="Senha"
@@ -46,14 +42,17 @@ export default function App() {
         />
 
         <TouchableOpacity>
-          <Text style={[styles.forgotPassword, { fontFamily: 'Inter-Regular' }]}>Esqueceu a senha?</Text>
+          <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.loginButton}>
-          <Text style={[styles.loginButtonText, { fontFamily: 'Inter-Regular' }]}>Entrar</Text>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={() => navigation.navigate('Dashboard')}
+        >
+          <Text style={styles.loginButtonText}>Entrar</Text>
         </TouchableOpacity>
 
-        <Text style={[styles.orText, { fontFamily: 'Inter-Regular' }]}>Ou login com</Text>
+        <Text style={styles.orText}>Ou login com</Text>
 
         {/* Ícones de redes sociais */}
         <View style={styles.socialContainer}>
@@ -68,8 +67,11 @@ export default function App() {
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.createAccountButton}>
-          <Text style={[styles.createAccountText]}>Criar conta</Text>
+        <TouchableOpacity
+          style={styles.createAccountButton}
+          onPress={() => navigation.navigate('Register')}
+        >
+          <Text style={styles.createAccountText}>Criar conta</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     marginTop: 10,
     fontSize: 48,
-    fontWeight: '500', 
+    fontWeight: '500',
     fontFamily: 'BebasNeue-Regular',
   },
   form: {
@@ -108,15 +110,14 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
     height: '100%',
-    backgroundColor:'#F5F5F5'
-    
+    backgroundColor: '#F5F5F5',
   },
   loginTitle: {
     fontSize: 25,
     marginBottom: 20,
     textAlign: 'center',
     fontWeight: '400',
-    fontFamily: 'Inter-Regular', // Fonte Inter no título
+    fontFamily: 'Inter-Regular',
     paddingTop: 20,
   },
   input: {
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     borderRadius: 11,
     padding: 12,
     marginBottom: 12,
-    fontFamily: 'Inter-Regular', // Fonte Inter nos campos
+    fontFamily: 'Inter-Regular',
     fontSize: 18,
   },
   forgotPassword: {
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginBottom: 20,
     fontFamily: 'Inter-Regular',
-    fontSize: 15 ,
+    fontSize: 15,
   },
   loginButton: {
     backgroundColor: '#321896',
@@ -144,16 +145,16 @@ const styles = StyleSheet.create({
   },
   loginButtonText: {
     color: '#fff',
-    fontWeight: 600,
+    fontWeight: '600',
     fontSize: 17,
-    fontFamily: 'Inter-Regular', // Fonte Inter no botão de login
+    fontFamily: 'Inter-Regular',
   },
   orText: {
     fontWeight: '500',
     textAlign: 'center',
     marginBottom: 15,
     color: '#666',
-    fontFamily: 'Inter-Regular', // Fonte Inter no texto "Ou login com"
+    fontFamily: 'Inter-Regular',
   },
   socialContainer: {
     flexDirection: 'row',
@@ -171,7 +172,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 2, // Para Android
+    elevation: 2,
   },
   createAccountButton: {
     borderWidth: 1,
@@ -182,14 +183,10 @@ const styles = StyleSheet.create({
   },
   createAccountText: {
     color: '#000',
-    fontWeight: 600,
+    fontWeight: '600',
     fontSize: 17,
-    fontFamily: 'Inter-Regular', // Fonte Inter no botão de criar conta
+    fontFamily: 'Inter-Regular',
   },
-  // Usar a fonte BebasNeue apenas no elemento específico
-  
-
-  // Estilo para tela de carregamento
   loadingContainer: {
     flex: 1,
     justifyContent: 'center',
