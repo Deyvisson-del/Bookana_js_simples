@@ -1,29 +1,27 @@
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { View, ActivityIndicator, StyleSheet } from 'react-native';
+import { useFonts } from 'expo-font';
 
 import HomeScreen from './HomeScreen';
 import SecondScreen from './SecondScreen';
 import ThirdScreen from './ThirdScreen';
 import FourthScreen from './FourthScreen';
-import { useFonts } from 'expo-font';
+import FifthScreen from './FifthScreen';     
 
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
-// import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
-// import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
-// import AppLoading from 'expo-app-loading';
-// import { MaterialIcons, FontAwesome5, Ionicons } from '@expo/vector-icons';
-
-// import { StatusBar } from 'expo-status-bar';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
- 
   const [fontsLoaded] = useFonts({
-    'Inter-Regular': require('./assets/Inter-Regular.ttf'),   
-    'BebasNeue-Regular': require('./assets/BebasNeue-Regular.ttf'),  
+    'Inter-Regular': require('./assets/Inter-Regular.ttf'),
+    'BebasNeue-Regular': require('./assets/BebasNeue-Regular.ttf'),
+    'Poppins_400Regular': require('./assets/Poppins-Regular.ttf'),
+    'Poppins_700Bold': require('./assets/Poppins-Bold.ttf'),
+    'Inter_400Regular': require('./assets/Inter-Regular.ttf'),
+    'Inter_700Bold': require('./assets/Inter-Bold.ttf'),
   });
 
-  
   if (!fontsLoaded) {
     return (
       <View style={styles.loadingContainer}>
@@ -31,24 +29,24 @@ export default function App() {
       </View>
     );
   }
-  
+
   return (
-   <NavigationContainer>
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen}/>
-      <Stack.Screen name="Second" component={SecondScreen}/>
-      <Stack.Screen name="Third" component={ThirdScreen}/>
-      <Stack.Screen name="Four" component={FourthScreen}/>
-    </Stack.Navigator>
-   </NavigationContainer>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Register" component={SecondScreen} />
+        <Stack.Screen name="Login" component={ThirdScreen} />
+        <Stack.Screen name="Dashboard" component={FourthScreen} />
+        {/* <Stack.Screen name="Profile" component={FifthScreen} /> */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  loadingContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
